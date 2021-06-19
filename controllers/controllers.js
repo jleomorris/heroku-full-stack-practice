@@ -4,7 +4,7 @@ const saySomething = (req, res, next) => {
     process.env.NODE_ENV === 'staging'
   ) {
     res.status(200).json({
-      body: 'process.env.REACT_APP_FAKE_TEST_KEY',
+      body: process.env.REACT_APP_FAKE_TEST_KEY,
     });
   } else {
     res.status(200).json({
