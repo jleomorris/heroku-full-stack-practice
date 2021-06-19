@@ -8,7 +8,7 @@ const saySomething = (req, res, next) => {
     });
   } else {
     res.status(200).json({
-      body: 'Hello from the server!',
+      body: `Hello from the server! You are in development mode.`,
     });
   }
 };

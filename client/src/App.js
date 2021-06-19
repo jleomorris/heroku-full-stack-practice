@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
-class App extends Component {
-  state = {
-    response: {},
-  };
+const App = () => {
+  const [response, setResponse] = useState({});
 
-  componentDidMount() {
+  useEffect(() => {
     axios.get('/api/v1/say-something').then((res) => {
       const response = res.data;
-      this.setState({ response });
+      setResponse(response);
     });
-  }
+  }, []);
 
-  render() {
-    return (
-      <div className='App'>
-        <h1>Here is our new feature!</h1>
-        <h1>{this.state.response.body}</h1>
-      </div>
-    );
-  }
-}
+  return (
+    <div className='App'>
+      <h1>Here is our new feature!</h1>
+      <h1>Fetched data: {response.body}</h1>
+    </div>
+  );
+};
 
 export default App;
